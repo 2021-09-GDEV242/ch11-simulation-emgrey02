@@ -45,7 +45,7 @@ public class Rabbit extends Animal
      */
     public void act(List<Animal> newRabbits)
     {
-        incrementAge();
+        super.incrementAge();
         if(isAlive()) {
             giveBirth(newRabbits);            
             // Try to move into a free location.
@@ -76,15 +76,11 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Increase the age.
-     * This could result in the rabbit's death.
+     * Get the max age of the rabbit
+     * @return the max age of the rabbit
      */
-    private void incrementAge()
-    {
-        //age++;
-        //if(age > MAX_AGE) {
-        //   setDead();
-        //}
+    public int getMaxAge() {
+        return MAX_AGE;
     }
     
     /**

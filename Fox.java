@@ -91,14 +91,11 @@ public class Fox extends Animal
     }
     
     /**
-     * Increase the age. This could result in the fox's death.
+     * Get the max age of the fox
+     * @return the max age of the fox
      */
-    private void incrementAge()
-    {
-        //age++;
-        //if(age > MAX_AGE) {
-        //    setDead();
-        //}
+    public int getMaxAge() {
+        return MAX_AGE;
     }
     
     /**

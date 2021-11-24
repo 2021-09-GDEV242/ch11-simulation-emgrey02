@@ -47,6 +47,24 @@ public abstract class Animal
     }
     
     /**
+     * Get the max age of the animal.
+     * @return the max age of the animal
+     */
+    abstract public int getMaxAge();
+    
+    /**
+     * Increase the age.
+     * This could result in the animal's death.
+     */
+    protected void incrementAge()
+    {
+        age++;
+        if(age > getMaxAge()) {
+           setDead();
+        }
+    }
+    
+    /**
      * Set the current age of the animal.
      */
     public void setAge(int currentAge) {
