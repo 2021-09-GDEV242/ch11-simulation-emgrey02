@@ -14,6 +14,8 @@ public abstract class Animal
     private Field field;
     // The animal's position in the field.
     private Location location;
+    // The animal's age.
+    private int age;
     
     /**
      * Create a new animal at location in field.
@@ -24,6 +26,7 @@ public abstract class Animal
     public Animal(Field field, Location location)
     {
         alive = true;
+        age = 0;
         this.field = field;
         setLocation(location);
     }
@@ -35,6 +38,27 @@ public abstract class Animal
      */
     abstract public void act(List<Animal> newAnimals);
 
+    /**
+     * Get the current age of the animal.
+     * @return the current age of the animal
+     */
+    public int getAge() {
+        return age;
+    }
+    
+    /**
+     * Set the current age of the animal.
+     */
+    public void setAge(int currentAge) {
+        age = currentAge;
+    }
+    
+    /**
+     * Get the breeding age of the animal.
+     * @return the breeding age of the animal
+     */
+    abstract public int getBreedingAge();
+    
     /**
      * Check whether the animal is alive or not.
      * @return true if the animal is still alive.
