@@ -113,20 +113,12 @@ public class Rabbit extends Animal
      */
     private int breed()
     {
-        int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    }
-
-    /**
-     * A rabbit can breed if it has reached the breeding age.
-     * @return true if the rabbit can breed, false otherwise.
-     */
-    private boolean canBreed()
-    {
-        return getAge() >= BREEDING_AGE;
+        //int births = 0;
+        //if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        //    births = rand.nextInt(MAX_LITTER_SIZE) + 1;
+        //}
+        //return births;
+        return 0;
     }
     
     /**

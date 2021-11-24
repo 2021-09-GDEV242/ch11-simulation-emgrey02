@@ -54,6 +54,13 @@ public abstract class Animal
     }
     
     /**
+     * Find out whether the animal can breed or not
+     * @return true if the animal can breed, else false
+     */
+    private boolean canBreed() {
+        return age >= getBreedingAge();
+    }
+    /**
      * Get the breeding age of the animal.
      * @return the breeding age of the animal
      */
