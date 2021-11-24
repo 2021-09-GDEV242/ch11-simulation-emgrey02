@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.Iterator;
-import java.util.Random;
 
 /**
  * A simple model of a fox.
@@ -24,8 +23,7 @@ public class Fox extends Animal
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
     private static final int RABBIT_FOOD_VALUE = 9;
-    // A shared random number generator to control breeding.
-    private static final Random rand = Randomizer.getRandom();
+    
     
     // Individual characteristics (instance fields).
     
@@ -145,27 +143,28 @@ public class Fox extends Animal
         // Get a list of adjacent free locations.
         Field field = getField();
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
-        int births = breed();
+        int births = super.breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
             Fox young = new Fox(false, field, loc);
             newFoxes.add(young);
         }
     }
-        
+    
     /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
+     * Get the breeding probability of the fox.
+     * @return the breeding probability of the fox
      */
-    private int breed()
-    {
-        //int births = 0;
-        //if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-        //    births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        //}
-        //return births;
-        return 0;
+    public double getBreedingProbability() {
+        return BREEDING_PROBABILITY;
+    }
+    
+    /**
+     * Get the max litter size of the fox.
+     * @return the max litter size of the fox
+     */
+    public int getMaxLitterSize() {
+        return MAX_LITTER_SIZE;
     }
     
     /**

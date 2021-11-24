@@ -101,20 +101,21 @@ public class Rabbit extends Animal
             newRabbits.add(young);
         }
     }
-        
+    
     /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
+     * Get the breeding probability of the rabbit.
+     * @return the breeding probability of the rabbit
      */
-    private int breed()
-    {
-        //int births = 0;
-        //if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-        //    births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        //}
-        //return births;
-        return 0;
+    public double getBreedingProbability() {
+        return BREEDING_PROBABILITY;
+    }
+    
+    /**
+     * Get the max litter size of the rabbit.
+     * @return the max litter size of the rabbit
+     */
+    public int getMaxLitterSize() {
+        return MAX_LITTER_SIZE;
     }
     
     /**
