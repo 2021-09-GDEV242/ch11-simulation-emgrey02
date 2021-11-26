@@ -26,10 +26,14 @@ public abstract class Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Animal(Field field, Location location)
+    public Animal(boolean randomAge, Field field, Location location)
     {
         alive = true;
-        age = 0;
+        if (randomAge) {
+            age = rand.nextInt(getMaxAge());
+        } else {
+            age = 0;
+        }
         this.field = field;
         setLocation(location);
     }

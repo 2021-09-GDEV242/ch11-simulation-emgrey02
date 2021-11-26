@@ -106,8 +106,8 @@ public class FieldStats
     }
     
     /**
-     * Generate counts of the number of foxes and rabbits.
-     * These are not kept up to date as foxes and rabbits
+     * Generate counts of the number of foxes, rabbits, and lynxes.
+     * These are not kept up to date as foxes, rabbits, and lynxes
      * are placed in the field, but only when a request
      * is made for the information.
      * @param field The field to generate the stats for.

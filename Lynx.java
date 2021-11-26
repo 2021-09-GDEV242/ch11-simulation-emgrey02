@@ -1,43 +1,49 @@
+
 import java.util.List;
 import java.util.Iterator;
 
 /**
- * A simple model of a fox.
- * Foxes age, move, eat rabbits, and die.
+ * A simple model of a lynx.
+ * Lynxes age, move, eat rabbits, and die.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * Lynxes compete with Foxes to prey on Rabbits. This will reduce the
+ * populations of Lynxes and Foxes from what they could have been as
+ * a lone predator. This competition benefits the Rabbit population, and
+ * jeopardizes the survival of the lynx or fox population
+ * 
+ * @author Emma Grey
+ * @version 2021.11.24
  */
-public class Fox extends Animal
+public class Lynx extends Animal
 {
-    // Characteristics shared by all foxes (class variables).
+    // Characteristics shared by all lynx (class variables).
     
-    // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 15;
-    // The age to which a fox can live.
-    private static final int MAX_AGE = 150;
-    // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.08;
+    // The age at which a lynx can start to breed.
+    private static final int BREEDING_AGE = 14;
+    // The age to which a lynx can live.
+    private static final int MAX_AGE = 200;
+    // The likelihood of a lynx breeding.
+    private static final double BREEDING_PROBABILITY = 0.10;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 2;
+    private static final int MAX_LITTER_SIZE = 3;
     // The food value of a single rabbit. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 9;
+    // number of steps a lynx can go before it has to eat again.
+    private static final int RABBIT_FOOD_VALUE = 6;
     
     // Individual characteristics (instance fields).
     
-    // The fox's food level, which is increased by eating rabbits.
+    // The lynx's food level, which is increased by eating rabbits.
     private int foodLevel;
 
     /**
-     * Create a fox. A fox can be created as a new born (age zero
-     * and not hungry) or with a random age and food level.
+     * Create a lynx. A lynx can be created as a new born (age zero
+     * and not hungry) or with a random age.
      * 
-     * @param randomAge If true, the fox will have random age and hunger level.
+     * @param randomAge If true, the lynx will have random age and hunger level.
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Fox(boolean randomAge, Field field, Location location)
+    public Lynx(boolean randomAge, Field field, Location location)
     {
         super(randomAge, field, location);
         foodLevel = RABBIT_FOOD_VALUE;
@@ -50,12 +56,12 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to return newly born foxes.
      */
-    public void act(List<Animal> newFoxes)
+    public void act(List<Animal> newLynxes)
     {
         incrementAge();
         incrementHunger();
         if(isAlive()) {
-            giveBirth(newFoxes);            
+            giveBirth(newLynxes);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -74,30 +80,30 @@ public class Fox extends Animal
     }
     
     /**
-     * Get the age of the fox.
-     * @return the age of the fox
+     * Get the age of the lynx.
+     * @return the age of the lynx
      */
     public int getAge() {
         return super.getAge();
     }
     
     /**
-     * Set the current age of the fox.
+     * Set the current age of the lynx.
      */
     public void setAge(int currentAge) {
         super.setAge(currentAge);
     }
     
     /**
-     * Get the max age of the fox
-     * @return the max age of the fox
+     * Get the max age of the lynx
+     * @return the max age of the lynx
      */
     public int getMaxAge() {
         return MAX_AGE;
     }
     
     /**
-     * Make this fox more hungry. This could result in the fox's death.
+     * Make this lynx more hungry. This could result in the lynx's death.
      */
     private void incrementHunger()
     {
@@ -133,11 +139,11 @@ public class Fox extends Animal
     }
     
     /**
-     * Check whether or not this fox is to give birth at this step.
+     * Check whether or not this lynx is to give birth at this step.
      * New births will be made into free adjacent locations.
-     * @param newFoxes A list to return newly born foxes.
+     * @param newLynxes A list to return newly born foxes.
      */
-    private void giveBirth(List<Animal> newFoxes)
+    private void giveBirth(List<Animal> newLynxes)
     {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.
@@ -146,29 +152,29 @@ public class Fox extends Animal
         int births = super.breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Fox young = new Fox(false, field, loc);
-            newFoxes.add(young);
+            Lynx young = new Lynx(false, field, loc);
+            newLynxes.add(young);
         }
     }
     
     /**
-     * Get the breeding probability of the fox.
-     * @return the breeding probability of the fox
+     * Get the breeding probability of the lynx.
+     * @return the breeding probability of the lynx
      */
     public double getBreedingProbability() {
         return BREEDING_PROBABILITY;
     }
     
     /**
-     * Get the max litter size of the fox.
-     * @return the max litter size of the fox
+     * Get the max litter size of the lynx.
+     * @return the max litter size of the lynx
      */
     public int getMaxLitterSize() {
         return MAX_LITTER_SIZE;
     }
     
     /**
-     * @return The age at which a fox starts to breed.
+     * @return The age at which the lynx starts to breed.
      */
     public int getBreedingAge() {
         return BREEDING_AGE;
